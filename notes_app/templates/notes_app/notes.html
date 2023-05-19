@@ -1,0 +1,22 @@
+{% extends 'main.html' %}
+{% block content %}
+<h1> All notes</h1>
+    <table>
+    <tr>
+        <th>Title</th>
+        <th>Content</th>
+        <th>Update</th>
+        <th></th>
+    </tr>
+{% for note in notes %}
+
+    <tr>
+        <td>{{ note.note_title }}</td>
+        <td>{{ note.content_field }}</td>
+        <td><a href="{% url 'update-notes' note.table_id %}">Edit</a> </td>
+        <td><a href="{% url 'delete-notes' note.table_id %}">Delete</a> </td>
+        <td><a href="{% url 'get-note' note.table_id %}">View</a> </td>
+    </tr>
+    {% endfor %}
+    </table>
+{% endblock content %}
